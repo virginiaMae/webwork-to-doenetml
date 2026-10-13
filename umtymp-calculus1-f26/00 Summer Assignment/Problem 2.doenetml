@@ -1,0 +1,158 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: faUfHgmRnPn2mdMmbX7c3i
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 24
+Doenet-Sync-Hash: ea74c4b085029418
+-->
+<problem boxed>
+  <setup>
+    <selectFromSequence name="a" from="3" to="7" step="2" />
+    <selectFromSequence name="b" from="2" to="4" step="2" />
+    <selectFromSequence name="c" from="2" to="5" />
+    
+    <math name="p1" simplify>5 $a - 2</math>
+    <math name="poly1" simplify="numbersPreserveOrder">10n^2 + $p1 n - $a</math>
+    
+    <math name="p2" simplify>2 $c + 1</math>
+    <math name="poly2" simplify="numbersPreserveOrder">$c n^2 + $p2 n + 2</math>
+
+    <math name="p3" simplify>2 $b</math>
+    <math name="poly3" simplify="numbersPreserveOrder">$b n^2 + $p3 n</math>
+    
+    <math name="p4" simplify>$a + 2</math>
+    <math name="poly4" simplify="numbersPreserveOrder">2 n^2 + $p4 n + $a</math>
+    <m name="dispExpr">\frac{$poly1}{$poly2} \cdot \frac{$poly3}{$poly4}</m>
+    
+    <math name="solA">$b * n * (5*n - 1)</math>
+    <math name="solB">($c * n + 1) * (n + 1)</math>
+  </setup>
+
+  <p>Multiply the two rational expressions</p>
+  <p><m>\displaystyle $dispExpr</m></p>
+  <p>Express your answer in simplest form <m>\frac{A}{B}</m>. Any coefficients or constants should be integers.</p>
+
+  <p>
+    <answer name="ansA">
+      <label><m>A =</m></label>
+      $solA
+    </answer>
+  </p>
+  <p>
+    <answer name="ansB">
+      <label><m>B =</m></label>
+      $solB
+    </answer>
+  </p>
+
+<givenAnswer>
+  <p><m>A = $solA</m>, <m>B = $solB</m></p>
+</givenAnswer>
+</problem>
+
+
+
+<!-- ##DESCRIPTION
+##  Algebra: Multiplying rational expressions 
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'rational expressions', 'multiplying')
+
+##DBsubject('Algebra')
+## DBchapter('Basic Algebra')
+## DBsection('Algebraic Expressions')
+## Date('10/11/2009')
+## Author('Justin Sukiennik')
+## Institution('University of Minnesota')
+## TitleText1('Algebra for College Students')
+## EditionText1('8')
+## AuthorText1('Kaufmann, Schwitters')
+## Section1('4.2')
+## Problem1('30')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "parserMultiAnswer.pl",
+   #"source.pl",        # allows code to be displayed on certain sites.
+   #"PGcourse.pl",      # Customization file for the course
+);
+
+########################################################################
+
+TEXT(beginproblem());
+
+$showPartialCorrectAnswers = 1;
+
+########################################################################
+
+Context("Numeric");
+Context()->variables->are(n=>'Real');
+
+$a = random(3,7,2);
+$b = random(2,4,2);
+$c = random(2,5,1);
+
+$poly1 = Compute("10n^2+(5*$a-2)n-$a") -> reduce;
+#(5n-1)(2n+$a)
+$poly2 = Compute("$c n^2+ (2*$c+1)n +2") -> reduce;
+#(n+2)($c n +1)
+$poly3 = Compute("$b n^2+ 2*$b n") -> reduce;
+#(n+2)($b n)
+$poly4 = Compute("2n^2+($a+2)n+$a") -> reduce;
+#(n+1)(2n+$a)
+
+$ans1 = Compute("5*$b n^2 - $b n");
+$ans2 = Compute("$c n^2 + (1+$c)n + 1");
+
+########################################################################
+
+$mp = MultiAnswer($ans1,$ans2)->with(
+         singleResult => 0,
+         checker => sub {
+            my ($correct,$student,$self) = @_;  # get the parameters
+            
+            my ( $p1, $p2 ) = @{$correct};      # get the correct num, denom
+            my ( $p1stu, $p2stu ) = @{$student};# get the student's num, denom
+
+            my $isPreview = $main::inputs_ref->{previewAnswers};
+
+            
+            $numeratorValid   = ( $p1==$p1stu || Compute("-1")*$p1==$p1stu );
+            $denominatorValid = ( $p2==$p2stu || Compute("-1")*$p2==$p2stu );
+            $quotientValid    = ( $p1/$p2 == Compute($p1stu)/Compute($p2stu) );
+
+            if (! $isPreview) { # Don't show messages if previewing....
+              Value::Error("Your numerator is incorrect") 
+                unless $numeratorValid;
+              Value::Error("Your denominator is incorrect") 
+                unless $denominatorValid;
+              Value::Error("One of your answers has the wrong sign") 
+                unless $quotientValid;
+            }
+
+            return $quotientValid;
+            },
+        );
+
+########################################################################
+
+Context()->texStrings;
+BEGIN_TEXT
+Multiply the two rational expressions
+\[
+\frac{$poly1}{$poly2} \cdot \frac{$poly3}{$poly4}.
+\]
+Express your answer in simplest form \(\frac{A}{B}\).  Any coefficients or constants should be integers.$PAR
+Answer: \(A =\) \{$mp->ans_rule(20)\} and \(B =\) \{$mp->ans_rule(20)\}
+END_TEXT
+Context()->normalStrings;
+
+########################################################################
+
+ANS( $mp->cmp );
+
+ENDDOCUMENT(); -->

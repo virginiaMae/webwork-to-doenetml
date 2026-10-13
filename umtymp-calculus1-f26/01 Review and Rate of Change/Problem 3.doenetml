@@ -1,0 +1,135 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: o8pooaBuhHJd9rSdpd44oR
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 100
+Doenet-Sync-Hash: 0c04f66c6699b225
+-->
+<problem boxed>
+  <setup>
+    <selectFromSequence name="a" from="2" to="6"/>
+    <math name="b_start">2*$a</math>
+    <selectFromSequence name="b" from="$b_start" to="14" step="2"/>
+    <selectFromSequence name="c" from="3" to="10"/>
+
+    <math name="c_minus_1" simplify>$c - 1</math>
+
+    <math name="ans1">(-infinity, infinity)</math>
+    <math name="ans2">(-infinity, $c_minus_1)</math>
+  </setup>
+
+  <p>
+    Find the domain and range for the function 
+    <m>
+      f(x) = \begin{cases} 
+      $a x - $b, &amp; \text{if } x \le 2, \\ 
+      $c - \frac{1}{2}x, &amp; \text{if } x \gt 2. 
+      \end{cases}
+    </m>
+  </p>
+
+  <part>
+    <p>
+      <answer name="q1">
+        <mathInput name="userDomain" unionFromU="true">
+          <label>Domain: </label>
+        </mathInput>
+        <award>$ans1</award>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q2">
+        <mathInput name="userRange" unionFromU="true">
+          <label>Range: </label>
+        </mathInput>
+        <award>$ans2</award>
+      </answer>
+    </p>
+  </part>
+
+  <givenAnswer>
+    <ol>
+      <li>$ans1</li>
+      <li>$ans2</li>
+    </ol>
+  </givenAnswer>
+</problem>
+
+
+<!-- #DESCRIPTION
+##  Calculus: Functions
+##ENDDESCRIPTION
+
+
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Domain and range)
+## Date(08/26/2010)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## Level(2)
+## MO(1)
+## TitleText1('Calculus: Concepts and Contexts')
+## AuthorText1('Stewart')
+## EditionText1('4 Custom UMTYMP Ed.')
+## Section1('1.1')
+## Problem1('44')
+## KEYWORDS('calculus', 'function', 'domain', 'range', 'piecewise function')
+
+#####################################################################
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
+
+#####################################################################
+install_problem_grader(~~&std_problem_grader);
+
+$showPartialCorrectAnswers = 0;
+
+TEXT(beginproblem());
+#####################################################################
+
+Context("Interval");
+# Let students type "EmptySet" instead of "NONE"
+Context()->constants->add(EmptySet => Set());
+Context()->flags->set(noneWord=>"EmptySet");
+
+$a = random(2,6,1);
+$b = random(2*$a,14,2);
+$c = random(3,10,1);
+
+$ans1 = Interval("(-infinity, infinity)");
+$ans2 = Interval("(-infinity,$c-1)");
+
+#####################################################################
+
+Context()->texStrings;
+BEGIN_TEXT
+Find the domain and range for the function 
+\[f(x) = 
+\begin{cases}
+$a x - $b, &\text{if } x \le 2, \\
+$c - \frac{1}{2}x, &\text{if } x > 2.
+\end{cases}
+\] 
+$HR
+Domain: \{ans_rule(20)\}
+$PAR
+Range: \{ans_rule(20)\}
+$PAR
+Use \{helpLink('interval notation')\}.
+$HR
+END_TEXT
+
+#####################################################################
+
+ANS(($ans1)->cmp());
+ANS(($ans2)->cmp());
+
+ENDDOCUMENT();        # This should be the last executable line in the problem. -->

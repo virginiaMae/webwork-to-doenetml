@@ -1,0 +1,15 @@
+# Other ways that indicate "this is the beginning of the text of the problem:"
+
+BEGIN_PGML 
+	# also, ends with 
+END_PGML
+
+
+
+
+
+
+# tolerances for credit
+# note, default absolute tolerance is 1/1000
+
+Real(random(1100,1700,100))->with(tolType=>'absolute')

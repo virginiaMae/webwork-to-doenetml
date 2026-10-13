@@ -1,0 +1,102 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: w2v6Smmr1UZudboUFFEbsD
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 5
+Doenet-Sync-Hash: 8d7d67da39097886
+-->
+<problem boxed>
+  <setup>
+    <selectFromSequence name="a" from="1" to="5"/>
+  </setup>
+
+  <p>Match the functions with one of the graphs below.</p>
+
+  <sideBySide margins="5%">
+    <div>
+      <p><alert>Graph A</alert></p>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8">
+        <shortDescription>Graph of the base exponential function y = e^x with a horizontal asymptote at y = 0 and a y-intercept at (0, 1).</shortDescription>
+        <function>e^x</function>
+      </graph>
+
+      <p><alert>Graph C</alert></p>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8">
+        <shortDescription>Graph of the exponential function shifted vertically downward by $a units, with a horizontal asymptote at y = -$a.</shortDescription>
+        <function>e^x - $a</function>
+      </graph>
+    </div>
+
+    <div>
+      <p><alert>Graph B</alert></p>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8">
+        <shortDescription>Graph of the exponential function shifted horizontally to the left by $a units, with a horizontal asymptote at y = 0.</shortDescription>
+        <function>e^(x + $a)</function>
+      </graph>
+
+      <p><alert>Graph D</alert></p>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8">
+        <shortDescription>Graph of the exponential function shifted horizontally to the left by $a units and vertically downward by $a units, with a horizontal asymptote at y = -$a.</shortDescription>
+        <function>e^(x + $a) - $a</function>
+      </graph>
+    </div>
+  </sideBySide>
+
+  <p>Choose the correct graph letter for each function:</p>
+
+  <part>
+    <p>
+      <answer name="q1" inline>
+        <label><m>y = e^{x + $a} - $a</m>: </label>
+        <choice>A</choice>
+        <choice>B</choice>
+        <choice>C</choice>
+        <choice credit="1">D</choice>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q2" inline>
+        <label><m>y = e^{x + $a}</m>: </label>
+        <choice>A</choice>
+        <choice credit="1">B</choice>
+        <choice>C</choice>
+        <choice>D</choice>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q3" inline>
+        <label><m>y = e^x</m>: </label>
+        <choice credit="1">A</choice>
+        <choice>B</choice>
+        <choice>C</choice>
+        <choice>D</choice>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q4" inline>
+        <label><m>y = e^x - $a</m>: </label>
+        <choice>A</choice>
+        <choice>B</choice>
+        <choice credit="1">C</choice>
+        <choice>D</choice>
+      </answer>
+    </p>
+  </part>
+
+  <givenAnswer>
+    <ol>
+      <li>D</li>
+      <li>B</li>
+      <li>A</li>
+      <li>C</li>
+    </ol>
+  </givenAnswer>
+</problem>

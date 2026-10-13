@@ -1,0 +1,151 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: nddE76C7Xwswu5LXuZPKBg
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 9
+Doenet-Sync-Hash: 4b00a411cbec3f8c
+-->
+<problem boxed>
+  <setup>
+    <selectFromSequence name="a" from="1" to="3"/>
+    <select name="b">16 25 36</select>
+    <number name="sqrtB">sqrt($b)</number>
+    <!-- <math name="sqrtB" simplify>sqrt($b)</math> -->
+    <math name="f">sqrt($a - x)</math>
+    <math name="g">sqrt($b - x^2)</math>
+
+    <math name="ans1">$f + $g</math>
+    <math name="ans3">$f - $g</math>
+    <math name="ans5">sqrt(($a - x)($b - x^2))</math>
+    <math name="ans7">$f / $g</math>
+
+    <math name="ans2">[-$sqrtB, $a]</math>
+    <math name="ans4">[-$sqrtB, $a]</math>
+    <math name="ans6">[-$sqrtB, $a]</math>
+    <math name="ans8">(-$sqrtB, $a]</math>
+  </setup>
+
+  <p>
+    Let <m>f(x) = $f</m> and <m>g(x) = $g.</m> Find <m>f + g,</m> <m>f - g,</m> <m>f \cdot g,</m> and <m>\frac{f}{g}</m>, and their respective domains. Enter domain responses in interval notation.
+  </p>
+
+<!-- <div sectionWideCheckWork> -->
+  <part>
+    <p> 
+    <answer name="q1">
+      <label><m>f + g = </m></label>
+      <award>$ans1</award>
+    </answer></p>
+  </part>
+  
+  <part>
+    <p> 
+    <answer name="q2">
+      <label>What is the domain of <m>f + g</m>?</label>
+      <award>$ans2</award>
+    </answer></p>
+  </part>
+
+  <part>
+    <p> 
+    <answer name="q3">
+      <label><m>f - g =</m></label>
+      <award>$ans3</award>
+    </answer></p>
+  </part>
+  
+  <part>
+    <p>
+    <answer name="q4">
+      <label>What is the domain of <m>f - g</m>?</label>
+      <award>$ans4</award>
+    </answer></p>
+  </part>
+
+  <part>
+    <p>
+    <answer name="q5">
+      <label><m>f \cdot g =</m> </label>
+      <award>$ans5</award>
+    </answer>
+    </p>
+  </part>
+  
+  <part>
+    <p>
+    <answer name="q6">
+      <label>What is the domain of <m>f \cdot g</m>?</label>
+      <award>$ans6</award>
+    </answer></p>
+  </part>
+
+  <part>
+    <p>
+    <answer name="q7">
+      <label><m>\frac{f}{g} =</m> </label>
+      <award>$ans7</award>
+    </answer></p>
+  </part>
+  
+  <part>
+    <p>
+    <answer name="q8">
+      <label>What is the domain of <m>\frac{f}{g}</m>?</label>
+      <award>$ans8</award>
+    </answer></p>
+  </part>
+<!-- </div> -->
+
+<givenAnswer>
+  <ol>
+    <li><p>$ans1</p></li>
+    <li><p>$ans2</p></li>
+    <li><p>$ans3</p></li>
+    <li><p>$ans4</p></li>
+    <li><p>$ans5</p></li>
+    <li><p>$ans6</p></li>
+    <li><p>$ans7</p></li>
+    <li><p>$ans8</p></li>
+  </ol>
+</givenAnswer>
+
+<!-- <solution>
+    <p>
+      <alert>Step 1: Perform indicated operations</alert><br />
+      To add, subtract, multiply, or divide functions, we simply apply the operations to their algebraic rules:
+    </p>
+    <ul>
+      <li><m>f+g = $ans1</m></li>
+      <li><m>f-g = $ans3</m></li>
+      <li><m>f \cdot g = $ans5</m></li>
+      <li><m>\frac{f}{g} = $ans7</m></li>
+    </ul>
+
+    <p>
+      <alert>Step 2: Find the domains</alert><br />
+      First, let's find the domains of the individual functions <m>f(x)</m> and <m>g(x)</m>.
+    </p>
+    <p>
+      For <m>f(x) = \sqrt{$a - x}</m>, the expression under the square root must be non-negative:
+      <me>$a - x \ge 0 \implies x \le $a</me>
+      So, the domain of <m>f</m> is <m>(-\infty, $a]</m>.
+    </p>
+    <p>
+      For <m>g(x) = \sqrt{$b - x^2}</m>, the expression under the square root must also be non-negative:
+      <me>$b - x^2 \ge 0 \implies x^2 \le $b \implies -$sqrtB \le x \le $sqrtB</me>
+      So, the domain of <m>g</m> is <m>[-$sqrtB, $sqrtB]</m>.
+    </p>
+    <p>
+      For the sum, difference, and product (<m>f+g</m>, <m>f-g</m>, and <m>f \cdot g</m>), the domain is the intersection of the domains of <m>f</m> and <m>g</m>:
+      <me>(-\infty, $a] \cap [-$sqrtB, $sqrtB] = [-$sqrtB, $a]</me>
+    </p>
+    <p>
+      For the quotient <m>\frac{f}{g}</m>, we must additionally exclude any values where the denominator <m>g(x) = 0</m>. 
+      Since <m>g(x) = 0</m> at <m>x = -$sqrtB</m> and <m>x = $sqrtB</m>, we change the closed bracket at <m>-$sqrtB</m> to an open parenthesis. 
+      (Note that <m>x = $sqrtB</m> is already excluded by the restriction <m>x \le $a</m>).
+    </p>
+    <p>
+      Therefore, the domain of <m>\frac{f}{g}</m> is <m>(-$sqrtB, $a]</m>.
+    </p>
+  </solution> -->
+  
+</problem>

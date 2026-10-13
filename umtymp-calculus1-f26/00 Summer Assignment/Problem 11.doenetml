@@ -1,0 +1,266 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: qBMzTPzsdtAs1UFtjBRgvK
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 100
+Doenet-Sync-Hash: cb5ea969b27478ee
+-->
+<problem boxed>
+<setup>
+  <selectFromSequence name="a" from="1" to="3" />
+  <selectFromSequence name="b" from="-5" to="5" exclude="0" />
+  <selectFromSequence name="c" from="2" to="4" />
+  <math name="ineqA">y + x >= -$a</math>
+  <math name="ineqBx">x <= 2</math>
+  <math name="ineqBy">y >= 4</math>
+  <math name="ineqC">y <= $b</math>
+  <math name="ineqD">x + y <= $c</math>
+</setup>
+
+<p>Match each linear inequality with its corresponding graph from the options below. Enter the uppercase or lowercase letter (<alert>A</alert>, <alert>B</alert>, <alert>C</alert>, or <alert>D</alert>) in the box next to each inequality.</p>
+
+  <tabular>
+    <row>
+      <cell>
+      <br/><alert>Graph A</alert>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8" fixAxes grid>
+      <shortDescription>A shaded region is bounded above below the line y equals negative x minus $a. The boundary line is solid.</shortDescription>
+      <function name="lA">-x - $a</function>
+      <function name="highLine">20</function>
+      <regionBetweenCurves boundaryValues="-15 15">$highLine $lA</regionBetweenCurves>
+    </graph>
+    </cell>
+      
+    <cell>
+      <br/><alert>Graph B</alert>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8" fixAxes grid>
+      <shortDescription>A rectangular shaped shaded region is bounded below by the horizontal line y equals 4 and on the right side by the vertical line y equals 2</shortDescription>
+      <lineSegment endpoints="(2,4) (2,20)"/>
+      <function name="fB" domain="(-infinity,2]">4</function>
+      <function name="highLineB">20</function>
+      <regionBetweenCurves boundaryValues="-15 2">$highLineB $fB</regionBetweenCurves>
+    </graph>
+    </cell>
+    </row>
+
+    <row>
+      <cell>
+      <br/><alert>Graph C</alert>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8" fixAxes grid>
+      <shortDescription>A shaded region is bounded above by the horizontal line y equals $b</shortDescription>
+      <function name="fC">$b</function>
+      <function name="lowLine">-20</function>
+      <regionBetweenCurves boundaryValues="-15 15">$fC $lowLine</regionBetweenCurves>
+    </graph>
+    </cell>
+      
+    <cell>
+      <br/><alert>Graph D</alert>
+       <graph xmin="-8" xmax="8" ymin="-8" ymax="8" fixAxes grid>
+      <shortDescription>A shaded region is bounded above by the line y equals negative x plus $c</shortDescription>
+      <function name="fD">-x + $c</function>
+      <function name="lowLineD">-20</function>
+      <regionBetweenCurves boundaryValues="-15 15">$fD $lowLineD</regionBetweenCurves>
+    </graph>
+    </cell>
+    </row>
+  </tabular>
+
+
+ <p>Select the correct graph for each inequality:</p>
+
+  <shuffle name="s">
+    <part name="partA">
+      <p>
+      <answer inline>
+        <label><m>$ineqA</m></label>
+          <choice credit="1">A</choice>
+          <choice>B</choice>
+          <choice>C</choice>
+          <choice>D</choice>
+      </answer></p>
+      <text name="correctLetter" hide>A</text>
+    </part>
+    <part name="partB">
+      <p>
+      <answer inline>
+        <label>$ineqBx and $ineqBy</label>
+          <choice>A</choice>
+          <choice credit="1">B</choice>
+          <choice>C</choice>
+          <choice>D</choice>
+      </answer></p>
+      <text name="correctLetter" hide>B</text>
+    </part>
+    <part name="partC">
+      <p>
+      <answer inline>
+        <label><m>$ineqC</m></label>
+          <choice>A</choice>
+          <choice>B</choice>
+          <choice credit="1">C</choice>
+          <choice>D</choice>
+      </answer></p>
+      <text name="correctLetter" hide>C</text>
+    </part>
+    
+    <part name="partD">
+      <p>
+      <answer inline>
+        <label><m>$ineqD</m></label>
+          <choice>A</choice>
+          <choice>B</choice>
+          <choice>C</choice>
+          <choice credit="1">D</choice>
+      </answer></p>
+      <text name="correctLetter" hide>D</text>
+    </part>
+  </shuffle>
+
+<givenAnswer>
+    <ol>
+      <li><p><text extend="$s[1].correctLetter" hide="false"/></p></li>
+      <li><p><text extend="$s[2].correctLetter" hide="false"/></p></li>
+      <li><p><text extend="$s[3].correctLetter" hide="false"/></p></li>
+      <li><p><text extend="$s[4].correctLetter" hide="false"/></p></li>
+    </ol>
+</givenAnswer>
+</problem>
+
+
+
+
+
+
+<!-- 
+#DESCRIPTION
+##  Algebra: Coordinates and Graphs
+##ENDDESCRIPTION
+
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear inequalities)
+## Date(11/24/2009)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(SolutionRegionOnPlane)
+## MLTleader(1)
+## Level(3)
+## TitleText1('Algebra for College Students')
+## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
+## Section1('7.3')
+## Problem1('')
+## KEYWORDS('algebra', 'coordinate', 'inequalities', 'linear', 'graph')
+
+#####################################################################
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "choiceUtils.pl",
+  "PGcourse.pl"
+);
+########################################################################
+
+install_problem_grader(~~&std_problem_grader);
+
+$showPartialCorrectAnswers = 0;
+
+TEXT(beginproblem);
+
+#####################################################################
+
+$w = 300;  # graph size
+$tw = 400; # graph size in TeX
+
+$a = random(1,3,1);
+$b = non_zero_random(-5,5,1);
+$c = random(2,4,1);
+
+$graph1 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$graph2 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$graph3 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$graph4 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+
+$p1 = FEQ("-x -$a for x in <-8,8> using color:blue weight:2 line:dashed");
+$p2 = FEQ("4 for x in <-8,2> using color:blue weight:2");
+$p3 = FEQ("$b for x in <-8,8> using color:blue weight:2");
+$p4 = FEQ("-x+$c for x in <-8,8> using color:blue weight:2");
+
+$graph2->moveTo(2,4);
+$graph2->lineTo(2,8,'blue',2);
+
+plot_functions($graph1,$p1);
+plot_functions($graph2,$p2);
+plot_functions($graph3,$p3);
+plot_functions($graph4,$p4);
+
+
+$graph1->fillRegion([0,0,'green']);
+$graph2->fillRegion([0,5,'green']);
+$graph3->fillRegion([0,-6,'green']);
+$graph4->fillRegion([0,0,'green']);
+
+##################################################
+
+sub bold {return $BBOLD.join("",@_).$EBOLD}
+
+@ops = (separation=>30, indent=>0);
+
+#####################################################################
+
+$imageTable =
+  BeginTable().
+    Row([image(insertGraph($graph1),width=>$w,height=>$w,tex_size=>$tw),image(insertGraph($graph2),width=>$w,height=>$w,tex_size=>$tw)],@ops).
+    TableSpace(5).
+    AlignedRow([bold('A'),bold('B')],@ops).
+    TableSpace(40).
+    Row([image(insertGraph($graph3),width=>$w,height=>$w,tex_size=>$tw),image(insertGraph($graph4),width=>$w,height=>$w,tex_size=>$tw)],@ops).
+    TableSpace(5).
+    AlignedRow([bold('C'),bold('D')],@ops).
+  EndTable();
+
+###############################################################
+
+$sl = new_select_list();
+$sl->{rf_print_q} = ~~&alt_print_q;
+$sl->{separation} = 10;
+
+$sl->qa(
+  "\( x+y \le $c\)",    "D",
+  "\(y +x \ge -$a\)",      "A",
+  "\(y \le $b\)",    "C",
+  "\(x \le 2\) and \(y \ge 4\)",    "B"
+);
+
+$sl->choose(4);
+
+########################################################################
+
+BEGIN_TEXT
+Match the inequalities with one of the graphs below.
+$PAR $imageTable $PAR
+$HR
+\{$sl->print_q\}
+$HR
+$BBOLD Note: $EBOLD $BITALIC You can click on the graphs to enlarge the images.$EITALIC
+$HR
+END_TEXT
+
+#####################################################################
+
+ANS(str_cmp($sl->ra_correct_ans));
+
+########################################################################
+
+ENDDOCUMENT();        # This should be the last executable line in the problem. -->

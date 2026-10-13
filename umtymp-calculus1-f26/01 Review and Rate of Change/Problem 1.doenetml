@@ -1,0 +1,140 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: mWJ7coDgf2wJRdKhHo3k48
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 100
+Doenet-Sync-Hash: a5fc847e18652f89
+-->
+<problem boxed>
+  <setup>
+    <selectFromSequence name="a" from="2" to="8"/>
+    <selectFromSequence name="b" from="2" to="8"/>
+    <selectFromSequence name="c" from="1" to="9"/>
+
+    <math name="f">$a + $b x - x^2</math>
+
+    <math name="f_c" simplify>$a + $b $c - $c^2</math>
+    <math name="b_minus_two_c">$b - 2$c</math>
+
+    <math name="ans" simplify="numbersPreserveOrder">($b - 2$c) - h</math>
+    <math name="ans2" simplify="numbersPreserveOrder">- h + ($b - 2$c) </math>
+  </setup>
+
+<!-- testing -->
+<!-- <p>ans = $ans</p>
+<p>ans2 = $ans2</p> -->
+<!-- testing -->
+
+  <p>
+    Let <m>f(x) = $f.</m> Find the difference quotient <m name="diffQuot">\frac{f($c+h)-f($c)}{h}</m>. Simplify your answer.
+  </p>
+
+
+    <p>
+      <answer name="q1" symbolicEquality>
+        <label><m>$diffQuot = </m></label>
+        <award>$ans</award>
+        <award>$ans2</award>
+      </answer>
+    </p>
+
+  <givenAnswer>
+    <p><m>$diffQuot = $ans</m></p>
+  </givenAnswer>
+  
+</problem>
+
+
+<!-- 
+  <solution>
+    <p>
+      <alert>Step 1: Evaluate <m>f($c)</m> and <m>f($c+h)</m>.</alert><br />
+      First, substitute <m>x = $c</m> into the original function:
+      <me>f($c) = $a + $b($c) - ($c)^2 = $f_c</me>
+    </p>
+    <p>
+      Next, substitute <m>x = $c+h</m> into the function and expand:
+      <md>
+        <mrow>f($c+h) &= $a + $b($c+h) - ($c+h)^2</mrow>
+        <mrow>&= <math simplify name="fOf2plusH">$a + $b $c + $b h - ($c)^2 - 2$c h - h^2</math></mrow>
+      </md>
+    </p>
+
+    <p>Now, subtract <m>f($c)</m> from <m>f($c+h)</m>:
+      <me>f($c+h) - f($c) = $fOf2plusH - $f_c</me>
+      Notice that the constant terms cancel out perfectly:
+      <me>f($c+h) - f($c) = <math name="num" simplify>$fOf2plusH - $f_c</math></me>
+    </p>
+
+    <p>
+      <alert>Step 3: Divide by <m>h</m> and simplify.</alert><br />
+      Finally, divide the remaining numerator terms by <m>h</m>:
+      <md>
+        <mrow>\frac{f($c+h)-f($c)}{h} &= \frac{$num}{h}</mrow>
+        <mrow>&= $ans</mrow>
+      </md>
+    </p>
+  </solution> -->
+
+<!-- 
+#DESCRIPTION
+##  Calculus: Functions
+##ENDDESCRIPTION
+
+
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Function notation)
+## Date(08/26/2010)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(BuildToDerivDefn)
+## Level(3)
+## MO(1)
+## TitleText1('Calculus: Concepts and Contexts')
+## AuthorText1('Stewart')
+## EditionText1('4 Custom UMTYMP Ed.')
+## Section1('1.1')
+## Problem1('25')
+## KEYWORDS('calculus', 'function', 'difference quotient')
+
+#####################################################################
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+#####################################################################
+
+$showPartialCorrectAnswers = 1;
+TEXT(beginproblem());
+
+
+Context("Numeric");
+Context()->variables->add(h =>'Real');
+
+$a = random(2,8,1);
+$b = random(2,8,1);
+$c = random(1,9,1);
+
+$ans = Compute("($b-2*$c)-h");
+
+#####################################################################
+
+Context()->texStrings;
+BEGIN_TEXT
+Let \(f(x) = $a + $b x -x^2.\)  Find the difference quotient \(\displaystyle \frac{f($c+h)-f($c)}{h}.\) Simplify your answer.
+$PAR
+Answer: \{ans_rule(40)\}
+$PAR
+END_TEXT
+
+#####################################################################
+
+ANS(($ans)->cmp());
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.  -->

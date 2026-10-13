@@ -1,0 +1,150 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: vvGCiKWjE1CBGcbujVxZK8
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 72
+Doenet-Sync-Hash: 9ab1fc4d654ea85d
+-->
+<problem boxed>
+  <setup>
+    <selectFromSequence name="a" from="1" to="2"/>
+    <selectFromSequence name="b" from="2" to="10"/>
+    <selectFromSequence name="c" from="2" to="5"/>
+    
+    <math name="f" simplify="numbers">
+      <conditionalContent>
+        <case condition="$a = 1">sin($b * x)</case>
+        <case condition="$a = 2">cos($b * x)</case>
+      </conditionalContent>
+    </math>
+    
+    <math name="g" simplify="numbers">x / ($c + x)</math>
+    
+    <math name="ans1" simplify="numbers">
+      <conditionalContent>
+        <case condition="$a = 1">sin(($b * x) / ($c + x))</case>
+        <case condition="$a = 2">cos(($b * x) / ($c + x))</case>
+      </conditionalContent>
+    </math>
+    
+    <math name="ans3" simplify="numbers">
+      <conditionalContent>
+        <case condition="$a = 1">sin($b * x) / ($c + sin($b * x))</case>
+        <case condition="$a = 2">cos($b * x) / ($c + cos($b * x))</case>
+      </conditionalContent>
+    </math>
+
+    <math name="ans5" simplify="numbers">
+      <conditionalContent>
+        <case condition="$a = 1">sin($b * sin($b * x))</case>
+        <case condition="$a = 2">cos($b * cos($b * x))</case>
+      </conditionalContent>
+    </math>
+
+    <math name="ans7" simplify="numbers">(x / ($c + x)) / ($c + (x / ($c + x)))</math>
+
+    <math name="neg_c">-$c</math>
+    <math name="c_sq_expr" simplify>-($c^2) / (1 + $c)</math>
+    
+    <math name="ans2">(-infinity, $neg_c) union ($neg_c, infinity)</math>
+    <math name="ans4">(-infinity, infinity)</math>
+    <math name="ans6">(-infinity, infinity)</math>
+    <math name="ans8">(-infinity, $neg_c) union ($neg_c, $c_sq_expr) union ($c_sq_expr, infinity)</math>
+  </setup>
+
+  <p>
+    Let <m>f(x) = $f</m> and <m>g(x) = \frac{x}{$c+x}.</m> Find <m>f \circ g,</m> <m>g \circ f,</m> <m>f \circ f,</m> and <m>g \circ g</m>, and their respective domains.
+  </p>
+
+  <part>
+    <p>
+      <answer name="q1">
+        <label><m>f \circ g =</m> </label>
+        <award>$ans1</award>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q2">
+        <mathInput name="userDomain1" unionFromU="true">
+          <label>What is the domain of <m>f \circ g</m>? (in interval notation): </label>
+        </mathInput>
+        <award>$ans2</award>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q3">
+        <label><m>g \circ f =</m> </label>
+        <award>$ans3</award>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q4">
+        <mathInput name="userDomain2" unionFromU="true">
+          <label>What is the domain of <m>g \circ f</m>? (in interval notation): </label>
+        </mathInput>
+        <award>$ans4</award>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q5">
+        <label><m>f \circ f =</m> </label>
+        <award>$ans5</award>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q6">
+        <mathInput name="userDomain3" unionFromU="true">
+          <label>What is the domain of <m>f \circ f</m>? (in interval notation): </label>
+        </mathInput>
+        <award>$ans6</award>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q7">
+        <label><m>g \circ g =</m> </label>
+        <award>$ans7</award>
+      </answer>
+    </p>
+  </part>
+
+  <part>
+    <p>
+      <answer name="q8">
+        <mathInput name="userDomain4" unionFromU="true">
+          <label>What is the domain of <m>g \circ g</m>? (in interval notation): </label>
+        </mathInput>
+        <award>$ans8</award>
+      </answer>
+    </p>
+  </part>
+
+  <givenAnswer>
+    <ol>
+      <li><p>$ans1</p></li>
+      <li><p>$ans2</p></li>
+      <li><p>$ans3</p></li>
+      <li><p>$ans4</p></li>
+      <li><p>$ans5</p></li>
+      <li><p>$ans6</p></li>
+      <li><p>$ans7</p></li>
+      <li><p>$ans8</p></li>
+    </ol>
+  </givenAnswer>
+</problem>

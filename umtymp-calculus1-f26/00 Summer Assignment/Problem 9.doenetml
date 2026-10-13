@@ -1,0 +1,254 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: bFGowfsmcqCSyXXmnuJnMt
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 100
+Doenet-Sync-Hash: 522c1e74cff23a3b
+-->
+<problem boxed>
+  <setup>
+    <selectFromSequence name="a" from="-5" to="5" exclude="0" />
+    <selectFromSequence name="b" from="-2" to="2" exclude="0" />
+    <selectFromSequence name="c" from="2" to="4" />
+    <number name="abs_b">|$b|</number>
+    <solveEquations name="solveB">$fB.formula = 0</solveEquations>
+    <solveEquations name="solveC">$fC.formula = 0</solveEquations>
+    <solveEquations name="solveD">$fD.formula = 0</solveEquations>
+    <text name="yInt">
+      <conditionalContent>
+        <case condition="-$b < 0">negative $b</case>
+        <case condition="-$b > 0">$abs_b</case>
+      </conditionalContent>
+    </text>
+    <text name="xIntB">$solveB.solutions</text>
+    <text name="xIntC">$solveC.solutions</text>
+    <text name="xIntD">$solveD.solutions</text>
+  </setup>
+
+
+<!-- testing -->
+<!-- <p>b = $b</p>
+<p>yInt = $yInt</p>
+<p>xIntB = $xIntB</p>
+<p>xIntC = $xIntC</p>
+<p>xIntD = $xIntD</p> -->
+<!-- testing -->
+
+  <p>Match the linear equations with one of the graphs below.</p>
+
+  <tabular>
+    <row>
+      <cell>
+      <br/><alert>Graph A</alert>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid>
+        <shortDescription>Graph of a horizontal line which intersects the y-axis at y equals $a</shortDescription>
+        <function name="fA">$a</function>
+      </graph>
+    </cell>
+    <cell>
+      <br/><alert>Graph B</alert>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid>
+        <shortDescription>Graph of a line with downward slope that intersects the y-axis at y equals $yInt and intersects the x-axis at x equals $xIntB</shortDescription>
+        <function name="fB">-1/2 * x - $b</function>
+      </graph>
+    </cell>
+    </row>
+    <row>
+      <cell>
+      <br/><alert>Graph C</alert>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid>
+        <shortDescription>Graph of a line with upward slope that intersects the y-axis at y equals $yInt and intersects the x-axis at x equals $xIntC</shortDescription>
+        <function name="fC">$c * x - $b</function>
+      </graph>
+    </cell>
+    <cell>
+      <br/><alert>Graph D</alert>
+      <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid>
+        <shortDescription>Graph of a line with downward slope that intersects the y-axis at y equals $yInt and intersects the x-axis at x equals $xIntD</shortDescription>
+        <function name="fD">-1/4 * x - $b</function>
+      </graph>
+    </cell>
+    </row>
+  </tabular>
+
+  <p>Select the correct graph for each equation:</p>
+
+  <shuffle name="s">
+    <part name="partA">
+      <p>
+      <answer inline>
+        <label><m>y = <math simplify="numbersPreserveOrder">$fA.formula</math></m></label>
+          <choice credit="1">A</choice>
+          <choice>B</choice>
+          <choice>C</choice>
+          <choice>D</choice>
+      </answer></p>
+      <text name="correctLetter" hide>A</text>
+    </part>
+    <part name="partB">
+      <p>
+      <answer inline>
+        <label><m>y = <math simplify="numbersPreserveOrder">$fB.formula</math></m></label>
+          <choice>A</choice>
+          <choice credit="1">B</choice>
+          <choice>C</choice>
+          <choice>D</choice>
+      </answer></p>
+      <text name="correctLetter" hide>B</text>
+    </part>
+    <part name="partC">
+      <p>
+      <answer inline>
+        <label><m>y = <math simplify="numbersPreserveOrder">$fC.formula</math></m></label>
+          <choice>A</choice>
+          <choice>B</choice>
+          <choice credit="1">C</choice>
+          <choice>D</choice>
+      </answer></p>
+      <text name="correctLetter" hide>C</text>
+    </part>
+    <part name="partD">
+      <p>
+      <answer inline>
+        <label><m>y = <math simplify="numbersPreserveOrder">$fD.formula</math></m></label>
+          <choice>A</choice>
+          <choice>B</choice>
+          <choice>C</choice>
+          <choice credit="1">D</choice>
+      </answer></p>
+      <text name="correctLetter" hide>D</text>
+    </part>
+  </shuffle>
+
+  <givenAnswer>
+    <ol>
+      <li><p><text extend="$s[1].correctLetter" hide="false"/></p></li>
+      <li><p><text extend="$s[2].correctLetter" hide="false"/></p></li>
+      <li><p><text extend="$s[3].correctLetter" hide="false"/></p></li>
+      <li><p><text extend="$s[4].correctLetter" hide="false"/></p></li>
+    </ol>
+    
+  </givenAnswer>
+</problem>
+
+
+
+<!-- #DESCRIPTION
+##  Algebra: Coordinates and Graphs
+##ENDDESCRIPTION
+
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Graphs of lines)
+## Date(11/24/2009)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(match1)
+## Level(2)
+## TitleText1('Algebra for College Students')
+## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
+## Section1('7.1')
+## Problem1('')
+## KEYWORDS('algebra', 'coordinate','line', 'graph')
+
+#####################################################################
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "choiceUtils.pl",
+  "PGcourse.pl"
+);
+########################################################################
+
+install_problem_grader(~~&std_problem_grader);
+
+$showPartialCorrectAnswers = 0;
+
+TEXT(beginproblem);
+
+#####################################################################
+
+$w = 300;  # graph size
+$tw = 400; # graph size in TeX
+
+$a = non_zero_random(-5,5,1);
+$b = non_zero_random(-2,2,1);
+$c = random(2,4,1);
+
+$graph1 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$graph2 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$graph3 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$graph4 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$line1 = FEQ("$a for x in <-8,8> using color:blue weight:2");
+$line2 = FEQ("-(1/2)x-$b for x in <-8,8> using color:blue weight:2");
+$line3 = FEQ("$c x -$b for x in <-8,8> using color:blue weight:2");
+$line4 = FEQ("-(1/4)x-$b for x in <-8,8> using color:blue weight:2");
+
+plot_functions($graph1,$line1);
+plot_functions($graph2,$line2);
+plot_functions($graph3,$line3);
+plot_functions($graph4,$line4);
+
+##################################################
+
+sub bold {return $BBOLD.join("",@_).$EBOLD}
+
+@ops = (separation=>30, indent=>0);
+
+#####################################################################
+
+$imageTable =
+  BeginTable().
+    Row([image(insertGraph($graph1),width=>$w,height=>$w,tex_size=>$tw),image(insertGraph($graph2),width=>$w,height=>$w,tex_size=>$tw)],@ops).
+    TableSpace(5).
+    AlignedRow([bold('A'),bold('B')],@ops).
+    TableSpace(40).
+    Row([image(insertGraph($graph3),width=>$w,height=>$w,tex_size=>$tw),image(insertGraph($graph4),width=>$w,height=>$w,tex_size=>$tw)],@ops).
+    TableSpace(5).
+    AlignedRow([bold('C'),bold('D')],@ops).
+  EndTable();
+
+########################################################################
+
+$sl = new_select_list();
+$sl->{rf_print_q} = ~~&alt_print_q;
+$sl->{separation} = 10;
+
+$sl->qa(
+  "\( y = $a\)",    "A",
+  "\(y=$c x -$b\)",      "C",
+  "\( y=-\frac{1}{2}x-$b\)",    "B",
+  "\( y = -\frac{1}{4}x-$b\)",    "D"
+);
+
+$sl->choose(4);
+
+########################################################################
+BEGIN_TEXT
+Match the linear equations with one of the graphs below.
+$PAR $imageTable $PAR
+$HR
+\{$sl->print_q\}
+$HR
+$BBOLD Note: $EBOLD $BITALIC You can click on the graphs to enlarge the images.$EITALIC
+$HR
+END_TEXT
+
+#####################################################################
+
+ANS(str_cmp($sl->ra_correct_ans));
+
+########################################################################
+
+ENDDOCUMENT();        # This should be the last executable line in the problem. -->

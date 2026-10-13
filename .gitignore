@@ -1,0 +1,8 @@
+.env
+.DS_Store
+__pycache__/
+*.pyc
+
+# Separate git checkouts that live alongside this repo locally
+DoenetML-converter/
+webwork-to-doenetml/

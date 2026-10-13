@@ -1,0 +1,97 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: igoQHMkaDYHbhZ4png6uoM
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 100
+Doenet-Sync-Hash: 84f490f0254dde3b
+-->
+<problem boxed>
+  <setup>
+    <selectFromSequence name="a" from="1" to="2" />
+    <selectFromSequence name="b" from="4" to="12" />
+    <selectFromSequence name="c" from="2" to="4" />
+    <selectFromSequence name="d" from="1" to="6" />
+    <math name="sol">y - $b = (1/$c) * (x - $a)</math>
+  </setup>
+
+  <p>Write the equation of the line that contains the point <m>P = ($a, $b)</m> and is parallel to the line <m>x - $c y = $d</m>.</p>
+
+  <p>  
+    <answer>
+      $sol
+      <label>Equation: </label>
+    </answer>
+  </p>
+
+<givenAnswer>
+  <p>$sol</p>
+</givenAnswer>
+</problem>
+
+
+<!-- 
+#DESCRIPTION
+##  Algebra: Coordinates and Graphs
+##ENDDESCRIPTION
+
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Parallel and perpendicular lines)
+## Date(12/01/2009)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(Line_given_point_parralel_given_line)
+## Level(3)
+## MO(1)
+## TitleText1('Algebra for College Students')
+## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
+## Section1('7.5')
+## Problem1('36')
+## KEYWORDS('algebra', 'coordinate', 'line', 'linear')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserImplicitPlane.pl",
+  "PGcourse.pl"
+);
+
+########################################################################
+
+TEXT(beginproblem());
+
+$showPartialCorrectAnswers = 1;
+
+########################################################################
+
+$a = random(1,2,1);
+$b = random(4,12,1);
+$c = random(2,4,1);
+$d = random(1,6,1);
+
+
+Context("ImplicitPlane");
+Context()->variables->are(x=>"Real",y=>"Real");
+
+$ans1 = ImplicitPlane("y-$b = (1/$c)*x-($a/$c)");
+
+########################################################################
+
+Context()->texStrings;
+BEGIN_TEXT
+Write the equation of the line that contains the point \(P =($a,$b)\) and is parallel to the line \(x-$c y=$d.\)
+$PAR
+Equation: \{ans_rule(40)\}
+END_TEXT
+Context()->normalStrings;
+
+########################################################################
+
+ANS( $ans1->cmp);
+
+ENDDOCUMENT(); -->
