@@ -1,0 +1,259 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: kc7gfY4bXNbQTXhoBsai2K
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6693c2cbbf31cd05
+-->
+<!--************************************************************
+Author: Justin Sukiennik - WeBWorK OPL
+Reviewed/Remixed by:
+
+About the problem: 
+************************************************************-->
+<problem><title />
+<setup>
+  <!-- Not converted: Perl subroutine `bold` -->
+  <math name="w">300</math>
+  <math name="tw">400</math>
+  <selectFromSequence name="a" from="2" to="4"/>
+  <!-- random permutation of 1-4: the order the four functions are listed in -->
+  <selectFromSequence name="ord" from="1" to="4" numToSelect="4"/>
+  <mathList name="fs">-(x-$a)^4  (x-$a)^4  x^4-$a  -x^4+$a</mathList>
+  <textList name="keys">C A B D</textList>
+  <function name="p1a" domain="[-8,8]">(x-$a)^4</function>
+  <function name="p2a" domain="[-8,8]">x^4-$a</function>
+  <function name="p3a" domain="[-8,8]">-(x-$a)^4</function>
+  <function name="p4a" domain="[-8,8]">-x^4+$a</function>
+</setup>
+
+<!-- testing -->
+<!-- <p>a = $a</p>
+<p>fs[order[1]] = $fs[$ord[1]]</p> -->
+<!-- /testing -->
+
+<p>Match the functions with one of the graphs below.</p>
+<sideBySide margins="2%">
+  <figure suppressFigureNameInCaption>
+    <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid="1 1">
+      <shortDescription>Graph A, showing an upward-opening quartic polynomial with vertex at ($a,0)</shortDescription>
+      $p1a
+    </graph>
+    <caption>A</caption>
+  </figure>
+  <figure suppressFigureNameInCaption>
+    <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid="1 1">
+      <shortDescription>Graph B, showing an upward-opening quartic polynomial with vertex at (0,-$a)</shortDescription>
+      $p2a
+    </graph>
+    <caption>B</caption>
+  </figure>
+</sideBySide>
+<sideBySide margins="2%">
+  <figure suppressFigureNameInCaption>
+    <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid="1 1">
+      <shortDescription>Graph C, showing a downward-opening quartic polynomial with vertex at ($a,0)</shortDescription>
+      $p3a
+    </graph>
+    <caption>C</caption>
+  </figure>
+  <figure suppressFigureNameInCaption>
+    <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid="1 1">
+      <shortDescription>Graph D, showing a downward-opening quartic polynomial with vertex at (0,a)</shortDescription>
+      $p4a
+    </graph>
+    <caption>D</caption>
+  </figure>
+</sideBySide>
+
+<ol>
+  <li>
+    <choiceInput inline name="ci1">
+    <label><m>f(x) = $fs[$ord[1]]</m></label>
+    <choice>A</choice>
+    <choice>B</choice>
+    <choice>C</choice>
+    <choice>D</choice>
+    </choiceInput>
+    <answer inline name="ans1" forceSmallCheckWorkButton>
+    <award><when>$ci1 = $keys[$ord[1]]</when></award>
+  </answer></li>
+  <li>
+    <choiceInput inline name="ci2">
+    <label><m>f(x) = $fs[$ord[2]]</m></label>
+    <choice>A</choice>
+    <choice>B</choice>
+    <choice>C</choice>
+    <choice>D</choice>
+    </choiceInput>
+    <answer inline name="ans2" forceSmallCheckWorkButton>
+    <award><when>$ci2 = $keys[$ord[2]]</when></award>
+  </answer></li>
+  <li>
+    <choiceInput inline name="ci3">
+    <label><m>f(x) = $fs[$ord[3]]</m></label>
+    <choice>A</choice>
+    <choice>B</choice>
+    <choice>C</choice>
+    <choice>D</choice>
+    </choiceInput>
+    <answer inline name="ans3" forceSmallCheckWorkButton>
+    <award><when>$ci3 = $keys[$ord[3]]</when></award>
+  </answer></li>
+  <li>
+    <choiceInput inline name="ci4">
+    <label><m>f(x) = $fs[$ord[4]]</m></label>
+    <choice>A</choice>
+    <choice>B</choice>
+    <choice>C</choice>
+    <choice>D</choice>
+    </choiceInput>
+    <answer inline name="ans4" forceSmallCheckWorkButton>
+    <award><when>$ci4 = $keys[$ord[4]]</when></award>
+  </answer></li>
+</ol>
+<p><alert> Note: </alert> <em> Use the (+) symbol in the lower-right corner
+of the graph to zoom in.</em></p>
+
+<givenAnswer>
+<ol>
+<li><m>f(x) = $fs[$ord[1]]</m>: $keys[$ord[1]]</li>
+<li><m>f(x) = $fs[$ord[2]]</m>: $keys[$ord[2]]</li>
+<li><m>f(x) = $fs[$ord[3]]</m>: $keys[$ord[3]]</li>
+<li><m>f(x) = $fs[$ord[4]]</m>: $keys[$ord[4]]</li>
+</ol>
+</givenAnswer>
+</problem>
+
+<!-- Generated from this WeBWorK problem: -->
+<!--
+<!- - Doenet-Sync
+Doenet-Sync-ID: kc7gfY4bXNbQTXhoBsai2K
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 6693c2cbbf31cd05
+- ->
+<!- - #DESCRIPTION
+##  Algebra: Transformation of Some Basic Curves
+##ENDDESCRIPTION
+
+
+## DBsubject(Algebra)
+## DBchapter(Transformations of functions and graphs)
+## DBsection(Reflect and shift)
+## Date(12/21/2009)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## Level(2)
+## TitleText1('Algebra for College Students')
+## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
+## Section1('8.5')
+## Problem1('3')
+## KEYWORDS('algebra', 'graph', 'functions')
+
+#####################################################################
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "choiceUtils.pl",
+  "PGcourse.pl"
+);
+########################################################################
+
+install_problem_grader(~~&std_problem_grader);
+
+$showPartialCorrectAnswers = 0;
+
+TEXT(beginproblem);
+
+#####################################################################
+
+$w = 300;  # graph size
+$tw = 400; # graph size in TeX
+
+$a = non_zero_random(2,4,1);
+
+$graph1 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$graph2 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$graph3 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$graph4 = init_graph(-8,-8,8,8,'axes'=>[0,0],'ticks'=>[16,16],'grid'=>[16,16],'size'=>[400,400]);
+
+$p1a = FEQ("(x-$a)^4 for x in <-8,8> using color:blue weight:2");
+$p1b = FEQ("(x-$a)^4 for x in <-8,8> using color:blue weight:2");
+$p2a = FEQ("x^4-$a for x in <-8,8> using color:blue weight:2");
+$p2b = FEQ("x^4-$a for x in <-8,8> using color:blue weight:2");
+$p3a = FEQ("-(x-$a)^4 for x in <-8,8> using color:blue weight:2");
+$p3b = FEQ("-(x-$a)^4 for x in <-8,8> using color:blue weight:2");
+$p4a = FEQ("-x^4+$a for x in <-8,8> using color:blue weight:2");
+$p4b = FEQ("-x^4+$a for x in <-8,8> using color:blue weight:2");
+
+plot_functions($graph1,$p1a,$p1b);
+plot_functions($graph2,$p2a,$p2b);
+plot_functions($graph3,$p3a,$p3b);
+plot_functions($graph4,$p4a,$p4b);
+
+##################################################
+
+sub bold {return $BBOLD.join("",@_).$EBOLD}
+
+@ops = (separation=>30, indent=>0);
+
+#####################################################################
+
+$imageTable =
+  BeginTable().
+    Row([image(insertGraph($graph1),width=>$w,height=>$w,tex_size=>$tw),image(insertGraph($graph2),width=>$w,height=>$w,tex_size=>$tw)],@ops).
+    TableSpace(5).
+    AlignedRow([bold('A'),bold('B')],@ops).
+    TableSpace(40).
+    Row([image(insertGraph($graph3),width=>$w,height=>$w,tex_size=>$tw),image(insertGraph($graph4),width=>$w,height=>$w,tex_size=>$tw)],@ops).
+    TableSpace(5).
+    AlignedRow([bold('C'),bold('D')],@ops).
+  EndTable();
+########################################################################
+
+Context()->texStrings;
+
+$sl = new_select_list();
+$sl->{rf_print_q} = ~~&alt_print_q;
+$sl->{separation} = 10;
+
+$sl->qa(
+  "\(f(x) = -(x-$a)^4\)",    "C",
+  "\(f(x) =(x-$a)^4\)",      "A",
+  "\(f(x) =x^4-$a\)",    "B",
+  "\(f(x) = -x^4+$a\)",    "D"
+);
+
+$sl->choose(4);
+
+
+########################################################################
+
+BEGIN_TEXT
+Match the functions with one of the graphs below.
+$PAR $imageTable $PAR
+$HR
+\{$sl->print_q\}
+$HR
+$BBOLD Note: $EBOLD $BITALIC You can click on the graphs to enlarge the images.$EITALIC
+$HR
+END_TEXT
+Context()->normalStrings;
+
+#####################################################################
+
+ANS(str_cmp($sl->ra_correct_ans));
+
+ENDDOCUMENT();        # This should be the last executable line in the problem. - ->
+
+-->

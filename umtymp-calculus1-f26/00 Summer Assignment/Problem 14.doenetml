@@ -1,0 +1,135 @@
+<!-- Doenet-Sync
+Doenet-Sync-ID: gSX4TpPJcPmsDicZexzr8x
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 360b9f3f72f1e71a
+-->
+<!--************************************************************
+Author: Justin Sukiennik - WeBWorK OPL
+Reviewed/Remixed by:
+
+About the problem: 
+************************************************************-->
+<problem><title />
+<setup>
+  <selectFromSequence name="b" from="-5" to="5" exclude="0"/>
+  <math name="P" simplify="full">(0,$b)</math>
+  <math name="sol1" simplify="full">(0,-$b)</math>
+  <math name="sol2" simplify="full">(0,$b)</math>
+  <math name="sol3" simplify="full">(0,-$b)</math>
+</setup>
+
+<!-- testing -->
+<!-- <p>sol1 = $sol1</p>
+<p>sol2 = $sol2</p>
+<p>sol3 = $sol3</p> -->
+<!-- /testing -->
+
+<p>For the point <m>P = $P</m>, determine the points that are symmetric with respect to the <m>x</m>-axis, <m>y</m>-axis, and the origin.</p>
+<part>
+  <p><answer name="ans1">$sol1</answer> is symmetric to <m>P</m> with respect to the <m>x</m>-axis.</p>
+</part>
+<part>
+  <p><answer name="ans2">$sol2</answer> is symmetric to <m>P</m> with respect to the <m>y</m>-axis.</p>
+</part>
+<part>
+  <p><answer name="ans3">$sol3</answer> is symmetric to <m>P</m> with respect to the origin.</p>
+</part>
+<p><alert> Note: </alert> <em> Write your answer in the form <m>(a,b)</m> where <m>a</m> and <m>b</m> are numbers.</em></p>
+
+<givenAnswer>
+  <part><m>$sol1</m></part>
+  <part><m>$sol2</m></part>
+  <part><m>$sol3</m></part>
+</givenAnswer>
+</problem>
+
+<!-- Generated from this WeBWorK problem: -->
+<!--
+<!- - Doenet-Sync
+Doenet-Sync-ID: gSX4TpPJcPmsDicZexzr8x
+Doenet-Sync-Version: 0.7.28
+Doenet-Sync-NumVariants: 1
+Doenet-Sync-Hash: 360b9f3f72f1e71a
+- ->
+<!- - #DESCRIPTION
+##  Algebra: Coordinates and Graphs
+##ENDDESCRIPTION
+
+
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Plotting points)
+## Date(11/24/2009)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(Symmetric_points)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('Algebra for College Students')
+## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
+## Section1('7.2')
+## Problem1('4')
+## KEYWORDS('algebra', 'coordinate','points', 'graph')
+
+#####################################################################
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGunion.pl",
+  "MathObjects.pl",
+  "PGchoicemacros.pl",
+  "PGgraphmacros.pl",
+  "PGcourse.pl"
+);
+
+#####################################################################
+
+install_problem_grader(~~&std_problem_grader);
+
+$showPartialCorrectAnswers = 0;
+
+TEXT(beginproblem);
+
+#####################################################################
+
+Context("Point");
+
+$b = non_zero_random(-5,5,1);
+
+$P = Compute("(0,$b)");
+
+$ans1 = Compute("(0,-$b)");
+$ans2 = Compute("(0,$b)");
+$ans3 = Compute("(0,-$b)");
+
+###############################################################
+
+Context()->texStrings;
+BEGIN_TEXT
+For the point \(P = $P\), determine the points that are symmetric with respect to the \(x\)-axis, \(y\)-axis, and the origin.
+$HR
+$BBOLD 1. $EBOLD\{ans_rule(5)\} is symmetric to \(P\) with respect to the \(x\)-axis.
+$PAR
+$BBOLD 2. $EBOLD\{ans_rule(5)\} is symmetric to \(P\) with respect to the \(y\)-axis.
+$PAR
+$BBOLD 3. $EBOLD\{ans_rule(5)\} is symmetric to \(P\) with respect to the origin.
+$HR
+$BBOLD Note: $EBOLD $BITALIC Write your answer in the form \((a,b)\) where \(a\) and \(b\) are numbers.$EITALIC
+$HR
+END_TEXT
+Context()->normalStrings;
+
+#####################################################################
+
+ANS( $ans1->cmp );
+ANS( $ans2->cmp );
+ANS( $ans3->cmp );
+
+ENDDOCUMENT();        # This should be the last executable line in the problem. - ->
+
+-->
