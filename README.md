@@ -8,12 +8,15 @@ course content on doenet.org.
 | --- | --- |
 | `umtymp-calculus1-f26/` | Mirror of the UMTYMP Calculus 1 (Fall 2026) folder on doenet.org, kept in sync with `scripts/` (see below) |
 | `Webwork2DoenetML/` | Raw WeBWorK `.pl` homework problems used as converter inputs |
-| `DoenetML-output/` | Sample converter output |
-| `Perl to DoenetML/` | An early Python converter (`perl_to_doenetml.py`), superseded by the JS converter |
 | `scripts/` | Pull/push sync with doenet.org |
+| `DoenetML-converter/` | Local checkout of the converter (gitignored here; see below) |
 
 The converter itself lives in the DoenetML monorepo at
 [`packages/webwork-to-doenetml/`](https://github.com/Doenet/DoenetML/tree/main/packages/webwork-to-doenetml).
+`DoenetML-converter/` is a git worktree of the local DoenetML fork
+(`../DoenetML-fork/DoenetML`) on the `webwork-converter-improvements` branch.
+Because this repo ignores it, VS Code's Source Control doesn't list it on its
+own: use "Git: Open Repository" and pick the folder to commit there.
 
 ## Syncing with doenet.org
 
