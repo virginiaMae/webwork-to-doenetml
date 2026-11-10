@@ -2,9 +2,163 @@
 Doenet-Sync-ID: pxZymPDztqULYGB198uSYH
 Doenet-Sync-Version: 0.7.28
 Doenet-Sync-NumVariants: 1
-Doenet-Sync-Hash: 7447fec3723e6902
+Doenet-Sync-Hash: bfc85bb2c112599f
 -->
-<!-- #DESCRIPTION
+
+<!--************************************************************
+Author: Justin Sukiennik - WeBWorK OPL
+Reviewed/Remixed by:
+
+About the problem: 
+************************************************************-->
+
+<problem><title />
+<setup>
+  <math name="w">300</math>
+  <math name="tw">400</math>
+  <select name="a" type="number">2 6</select>
+  <text name="descripA">
+    <conditionalContent>
+      <case condition="$a=2">Graph A is a cubic polynomial with roots at -2, 0, and 1.
+      As x becomes more negative, the function increases, and as x becomes more positive, the function decreases.</case>
+      <case condition="$a=6">Graph A is a cubic polynomial with roots at -3, 0, and 2.
+      As x becomes more negative, the function increases, and as x becomes more positive, the function decreases.</case>
+    </conditionalContent>
+  </text>
+  <text name="descripB">
+    <conditionalContent>
+      <case condition="$a=2">Graph B is a cubic polynomial with roots at -1, 0, and 2.
+      As x becomes more negative, the function decreases, and as x becomes more positive, the function increases.</case>
+      <case condition="$a=6">Graph B is a cubic polynomial with roots at -2, 0, and 3.
+      As x becomes more negative, the function decreases, and as x becomes more positive, the function increases.</case>
+    </conditionalContent>
+  </text>
+  <text name="descripC">
+    <conditionalContent>
+      <case condition="$a=2">Graph C is a cubic polynomial with roots at -1, 0, and 2.
+      As x becomes more negative, the function increases, and as x becomes more positive, the function decreases.</case>
+      <case condition="$a=6">Graph C is a cubic polynomial with roots at -2, 0, and 3.
+      As x becomes more negative, the function increases, and as x becomes more positive, the function decreases.</case>
+    </conditionalContent>
+  </text>
+  <text name="descripD">
+    <conditionalContent>
+      <case condition="$a=2">Graph D is a cubic polynomial with roots at -2, 0, and 1.
+      As x becomes more negative, the function decreases, and as x becomes more positive, the function increases.</case>
+      <case condition="$a=6">Graph D is a cubic polynomial with roots at -3, 0, and 2.
+      As x becomes more negative, the function decreases, and as x becomes more positive, the function increases.</case>
+    </conditionalContent>
+  </text>
+  <math name="f1" simplify="numbersPreserveOrder">x^3+x^2-$a*x</math>
+  <math name="f2" simplify="numbersPreserveOrder">x^3-x^2-$a*x</math>
+  <math name="f3" simplify="numbersPreserveOrder">-x^3-x^2+$a*x</math>
+  <math name="f4" simplify="numbersPreserveOrder">-x^3+x^2+$a*x</math>
+  <function name="p1" domain="[0,8]" stylenumber="1">$f3</function>
+  <function name="p1a" domain="[-8,0]" stylenumber="1">$f3</function>
+  <function name="p2" domain="[0,8]" stylenumber="1">$f2</function>
+  <function name="p2a" domain="[-8,0]" stylenumber="1">$f2</function>
+  <function name="p3" domain="[0,8]" stylenumber="1">$f4</function>
+  <function name="p3a" domain="[-8,0]" stylenumber="1">$f4</function>
+  <function name="p4" domain="[0,8]" stylenumber="1">$f1</function>
+  <function name="p4a" domain="[-8,0]" stylenumber="1">$f1</function>
+  <!-- random order of the questions: item i of the list shows question ord[i] -->
+  <selectFromSequence name="ord" from="1" to="4" numToSelect="4"/>
+  <group name="questions">
+    <label><m>f(x) = $f1</m></label>
+    <label><m>f(x) = $f2</m></label>
+    <label><m>f(x) = $f3</m></label>
+    <label><m>f(x) = $f4</m></label>
+  </group>
+  <textList name="keys">D B A C</textList>
+</setup>
+
+<p>Match the polynomial functions with one of the graphs below by first factoring the given polynomials.</p>
+<sideBySide margins="2%">
+  <figure suppressFigureNameInCaption>
+    <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid="1 1">
+      <shortDescription>$descripA</shortDescription>
+      $p1
+      $p1a
+    </graph>
+    <caption>A</caption>
+  </figure>
+  <figure suppressFigureNameInCaption>
+    <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid="1 1">
+      <shortDescription>$descripB</shortDescription>
+      $p2
+      $p2a
+    </graph>
+    <caption>B</caption>
+  </figure>
+</sideBySide>
+<sideBySide margins="2%">
+  <figure suppressFigureNameInCaption>
+    <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid="1 1">
+      <shortDescription>$descripC</shortDescription>
+      $p3
+      $p3a
+    </graph>
+    <caption>C</caption>
+  </figure>
+  <figure suppressFigureNameInCaption>
+    <graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid="1 1">
+      <shortDescription>$descripD</shortDescription>
+      $p4
+      $p4a
+    </graph>
+    <caption>D</caption>
+  </figure>
+</sideBySide>
+<ol>
+  <li>
+    <choiceInput inline name="ci1">$questions[$ord[1]]
+    <choice>A</choice>
+    <choice>B</choice>
+    <choice>C</choice>
+    <choice>D</choice>
+    </choiceInput>
+  </li>
+  <li>
+    <choiceInput inline name="ci2">$questions[$ord[2]]
+    <choice>A</choice>
+    <choice>B</choice>
+    <choice>C</choice>
+    <choice>D</choice>
+    </choiceInput>
+  </li>
+  <li>
+    <choiceInput inline name="ci3">$questions[$ord[3]]
+    <choice>A</choice>
+    <choice>B</choice>
+    <choice>C</choice>
+    <choice>D</choice>
+    </choiceInput>
+  </li>
+  <li>
+    <choiceInput inline name="ci4">$questions[$ord[4]]
+    <choice>A</choice>
+    <choice>B</choice>
+    <choice>C</choice>
+    <choice>D</choice>
+    </choiceInput>
+  </li>
+</ol>
+<answer name="ans1"><shortDescription>Check all answers</shortDescription><award><when>$ci1 = $keys[$ord[1]] and $ci2 = $keys[$ord[2]] and $ci3 = $keys[$ord[3]] and $ci4 = $keys[$ord[4]]</when></award></answer>
+<p><alert> Note: </alert> <em> Use the (+) symbol in the lower-right corner of the graph to zoom in.</em></p>
+
+<givenAnswer>
+  <ol>
+    <li>$questions[$ord[1]]: $keys[$ord[1]]</li>
+    <li>$questions[$ord[2]]: $keys[$ord[2]]</li>
+    <li>$questions[$ord[3]]: $keys[$ord[3]]</li>
+    <li>$questions[$ord[4]]: $keys[$ord[4]]</li>
+  </ol>
+</givenAnswer>
+</problem>
+
+<!-- Generated from this WeBWorK problem: -->
+<!--
+#DESCRIPTION
 ##  Algebra: Graphing polynomial functions
 ##ENDDESCRIPTION
 
@@ -132,4 +286,6 @@ ANS(str_cmp($sl->ra_correct_ans));
 
 ########################################################################
 
-ENDDOCUMENT();        # This should be the last executable line in the problem. -->
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+
+-->

@@ -2,9 +2,66 @@
 Doenet-Sync-ID: sCwVFbqZBcqBA1prsAE4mM
 Doenet-Sync-Version: 0.7.28
 Doenet-Sync-NumVariants: 1
-Doenet-Sync-Hash: 23720f04f580f83e
+Doenet-Sync-Hash: 841c6f85903e0840
 -->
-<!-- #DESCRIPTION
+<!--************************************************************
+Author: Justin Sukiennik - WeBWorK OPL
+Reviewed/Remixed by:
+
+About the problem: 
+************************************************************-->
+<problem><title />
+<setup>
+  <selectFromSequence name="a" from="-2" to="-1"/>
+  <selectFromSequence name="c" from="2" to="3"/>
+  <number name="ans">$a</number>
+  <number name="b">1</number>
+  <math name="f1" simplify="numbersPreserveOrder">(x-$a)^2(x-$b)(x-$c)</math>
+  <function name="p1" domain="[-8,0]" stylenumber="1">$f1</function>
+  <function name="p1a" domain="[0,2]" stylenumber="1">$f1</function>
+  <function name="p1b" domain="[2,8]" stylenumber="1">$f1</function>
+</setup>
+
+<!-- testing -->
+<!-- <p>ans = $ans</p>
+<p>b = $b</p>
+<p>c = $c</p> -->
+<!-- /testing -->
+
+<p>The graph below is a polynomial function in the form <m>f(x) = (x-a)^2(x-b)(x-c).</m>  Find suitable unique real numbers <m>a</m>, <m>b</m>, and <m>c</m> that describe the graph.</p>
+<graph xmin="-8" xmax="8" ymin="-8" ymax="8" grid="1 1">
+  <shortDescription>Graph of a quartic polynomial with both ends pointing up.
+  From left to right, the graph comes down and touches the x-axis at x = $ans
+  without crossing it, then rises off the top of the window and comes back down,
+  crosses the x-axis at x = $b, dips below the axis, and crosses back up at x = $c.</shortDescription>
+  $p1
+  $p1a
+  $p1b
+</graph>
+<p>Answer: </p>
+<p><mathInput name="userAns_a">
+<label><m>a = </m></label></mathInput>, 
+<mathInput name="userAns_b">
+<label><m>b = </m></label></mathInput>, 
+and <mathInput name="userAns_c">
+<label><m>c = </m></label></mathInput>
+<answer name="ans1">
+<shortDescription>Check all answers</shortDescription>
+<award><when>$userAns_a = $ans and $userAns_b = $b and $userAns_c = $c</when></award>
+<award><when>$userAns_a = $ans and $userAns_b = $c and $userAns_c = $b</when></award>
+</answer></p>
+<p><alert> Note: </alert> <em> Use the (+) symbol in the lower-right corner of the graph to zoom in.</em></p>
+
+<givenAnswer>
+  <p><m>a = $ans\;, b = $b\;, c = $c</m></p>
+  <p>or,</p>
+  <p><m>a = $ans\;, b = $c\;, c = $b</m></p>
+</givenAnswer>
+</problem>
+
+<!-- Generated from this WeBWorK problem: -->
+<!--
+#DESCRIPTION
 ##  Algebra: Graphing polynomial functions
 ##ENDDESCRIPTION
 
@@ -111,4 +168,6 @@ Context()->normalStrings;
 ANS( $ans->cmp );
 ANS( $multians->cmp() );
 
-ENDDOCUMENT();        # This should be the last executable line in the problem. -->
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+
+-->

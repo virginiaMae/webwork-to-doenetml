@@ -2,19 +2,19 @@
 Doenet-Sync-ID: kc7gfY4bXNbQTXhoBsai2K
 Doenet-Sync-Version: 0.7.28
 Doenet-Sync-NumVariants: 1
-Doenet-Sync-Hash: 6693c2cbbf31cd05
+Doenet-Sync-Hash: 4245df5ef6cbd25a
 -->
 <!--************************************************************
 Author: Justin Sukiennik - WeBWorK OPL
-Reviewed/Remixed by:
+Reviewed/Remixed by: Virginia Mae
 
-About the problem: 
+About the problem: Function matching exercise with four quartic
+functions. Horizontal and vertical shifts are randomized, as is
+the order of the functions presented in the problem statement.
 ************************************************************-->
 <problem><title />
 <setup>
   <!-- Not converted: Perl subroutine `bold` -->
-  <math name="w">300</math>
-  <math name="tw">400</math>
   <selectFromSequence name="a" from="2" to="4"/>
   <!-- random permutation of 1-4: the order the four functions are listed in -->
   <selectFromSequence name="ord" from="1" to="4" numToSelect="4"/>
@@ -74,9 +74,7 @@ About the problem:
     <choice>C</choice>
     <choice>D</choice>
     </choiceInput>
-    <answer inline name="ans1" forceSmallCheckWorkButton>
-    <award><when>$ci1 = $keys[$ord[1]]</when></award>
-  </answer></li>
+  </li>
   <li>
     <choiceInput inline name="ci2">
     <label><m>f(x) = $fs[$ord[2]]</m></label>
@@ -85,9 +83,7 @@ About the problem:
     <choice>C</choice>
     <choice>D</choice>
     </choiceInput>
-    <answer inline name="ans2" forceSmallCheckWorkButton>
-    <award><when>$ci2 = $keys[$ord[2]]</when></award>
-  </answer></li>
+  </li>
   <li>
     <choiceInput inline name="ci3">
     <label><m>f(x) = $fs[$ord[3]]</m></label>
@@ -96,9 +92,7 @@ About the problem:
     <choice>C</choice>
     <choice>D</choice>
     </choiceInput>
-    <answer inline name="ans3" forceSmallCheckWorkButton>
-    <award><when>$ci3 = $keys[$ord[3]]</when></award>
-  </answer></li>
+  </li>
   <li>
     <choiceInput inline name="ci4">
     <label><m>f(x) = $fs[$ord[4]]</m></label>
@@ -107,10 +101,9 @@ About the problem:
     <choice>C</choice>
     <choice>D</choice>
     </choiceInput>
-    <answer inline name="ans4" forceSmallCheckWorkButton>
-    <award><when>$ci4 = $keys[$ord[4]]</when></award>
-  </answer></li>
+  </li>
 </ol>
+<answer name="ans1"><shortDescription>Check all answers</shortDescription><award><when>$ci1 = $keys[$ord[1]] and $ci2 = $keys[$ord[2]] and $ci3 = $keys[$ord[3]] and $ci4 = $keys[$ord[4]]</when></award></answer>
 <p><alert> Note: </alert> <em> Use the (+) symbol in the lower-right corner
 of the graph to zoom in.</em></p>
 
